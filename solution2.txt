@@ -1,0 +1,21 @@
+function rot13(str) {
+  var newStr = "";
+  var regExp = /[A-Z]/i;
+  for(let i=0; i < str.length; i++){
+    var char = str[i];
+    if(char.match(regExp)){
+      if(str.charCodeAt(i) < 78){
+        // Range A - Z == 65 - 90 (através da função charCode At) 
+        char = String.fromCharCode(90-(13-(str.charCodeAt(i)-64)));
+      }
+      else{
+        char = String.fromCharCode(str.charCodeAt(i) - 13);
+      }
+    }
+    newStr += char;
+  }
+  return newStr;
+}
+
+console.log(rot13("SERR PBQR PNZC"));
+
